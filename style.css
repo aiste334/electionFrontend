@@ -1,0 +1,72 @@
+.header {
+    height: min-content;
+    width: 100%;
+    max-height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    padding-right: 50px;
+    background-color: rgb(120, 120, 128);
+    position: absolute;
+    z-index: 10;
+    color: #ddd;
+  }
+  
+  .header > div {
+    display: inline;
+  }
+  
+  .header > div > * {
+    margin-right: 50px;
+    display: inline;
+  }
+  table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-left: 50px;
+  }
+  
+  table td,
+  table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  table tr:hover {
+    background-color: #ddd;
+  }
+  
+  table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(95, 147, 224);
+    color: white;
+  }
+  .cta {
+    border-radius: 25px;
+    padding: 5px 15px;
+    border: solid 2px transparent;
+    background-color: rgb(105, 105, 114);
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  
+  tr .cta {
+    opacity: 0;
+  }
+  
+  tr:hover .cta {
+    opacity: 1;
+  }
+  .candidates{
+    padding-top: 100px;
+  }
