@@ -179,9 +179,6 @@ function addCandidateRow() {
       personalVotes: personalVotesInput.value,
     };
 
-    // function logArray() {
-    //   console.log(arrValues);
-    // }
 
     fetch(backendURI + "/candidate", {
       method: "POST",
@@ -197,20 +194,7 @@ function addCandidateRow() {
     location.reload();
   }
 }
-// function addCandidate() {
-//   let addBtn = document.querySelector(".addBtn");
-// }
-
 initParties();
 getCandidates();
 partyDropdown.addEventListener("change", getCandidates);
 
-// export default () => {
-//   const content = document.querySelector(".content");
-//   fetch("./pages/candidates/candidates.html")
-//     .then((response) => response.text())
-//     .then((html) => {
-//       content.innerHTML = html;
-//
-//     });
-// };
