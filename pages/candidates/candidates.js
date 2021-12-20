@@ -91,8 +91,8 @@ function createTable(candidateData) {
           console.log(inputParty);
           console.log("edited candidate: ", candidate);
           cell4.innerHTML = inputParty;
+          location.reload();
         });
-      location.reload();
     });
 
     // Create the Delete button
