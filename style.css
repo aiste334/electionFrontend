@@ -25,8 +25,9 @@
   table {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 95%;
     margin-left: 20px;
+    margin-bottom: 20px;
   }
   
   table td,
@@ -47,7 +48,7 @@
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: rgb(95, 147, 224);
+    background-color: rgb(194, 194, 194);
     color: white;
   }
   .cta {
@@ -70,4 +71,18 @@
   .candidates,
   .results{
     padding-top: 100px;
+    padding-left: 5px;
+  }
+  .addBtn{
+    margin-bottom: 100px;
+  }
+
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(185, 185, 185);
+    color: white;
+    text-align: center;
   }

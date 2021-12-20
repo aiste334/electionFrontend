@@ -1,10 +1,7 @@
 const backendURI = "http://localhost:9090";
-let partyDropdown;
-let table;
 
 function initParties() {
   partyDropdown = document.querySelector(".party-dropdown");
-
   //Get all the parties
   fetch(backendURI + "/parties")
     .then((response) => response.json())
@@ -35,7 +32,6 @@ const getCandidates = () => {
     fetch(backendURI + "/candidates")
       .then((response) => response.json())
       .then((candidates) => {
-        console.log(candidates);
         createTable(candidates);
       });
   } else {
@@ -115,9 +111,106 @@ function createTable(candidateData) {
         });
     });
   });
+
+  if (document.querySelector(".addBtn") === null) {
+    // Create an ADD button
+    const candidates = document.querySelector(".candidates");
+    const addBtn = document.createElement("button");
+    addBtn.innerHTML = "Add a Candidate";
+    addBtn.classList.add("cta");
+    addBtn.classList.add("addBtn");
+
+    candidates.appendChild(addBtn);
+    addBtn.addEventListener("click", addCandidateRow);
+  }
 }
+
+function addCandidateRow() {
+  let table = document.querySelector(".candidate-table");
+
+  let row = table.insertRow(-1);
+
+  let cell1 = row.insertCell(0);
+  let cell2 = row.insertCell(1);
+  let cell3 = row.insertCell(2);
+  let cell4 = row.insertCell(3);
+  let cell5 = row.insertCell(4);
+
+  const submitBtn = document.createElement("button");
+  submitBtn.setAttribute("class", "submitBtn");
+  submitBtn.innerHTML = "Submit";
+  submitBtn.classList.add("cta");
+  cell1.appendChild(submitBtn);
+
+  const firstNameInput = document.createElement("input");
+  firstNameInput.setAttribute("type", "text");
+  firstNameInput.setAttribute("value", "");
+  firstNameInput.setAttribute("class", "first-name-input");
+  cell2.appendChild(firstNameInput);
+  console.log(firstNameInput.value);
+
+  const lastNameInput = document.createElement("input");
+  lastNameInput.setAttribute("type", "text");
+  lastNameInput.setAttribute("value", "");
+  lastNameInput.setAttribute("class", "last-name-input");
+  cell3.appendChild(lastNameInput);
+  console.log(lastNameInput.value);
+
+  const partyInput = document.createElement("input");
+  partyInput.setAttribute("type", "text");
+  partyInput.setAttribute("value", "");
+  partyInput.setAttribute("class", "party-input");
+  cell4.appendChild(partyInput);
+  console.log(partyInput.value);
+
+  const personalVotesInput = document.createElement("input");
+  personalVotesInput.setAttribute("type", "text");
+  personalVotesInput.setAttribute("value", "");
+  personalVotesInput.setAttribute("class", "personal-votes-input");
+  cell5.appendChild(personalVotesInput);
+
+  submitBtn.addEventListener("click", addToArray);
+
+  function addToArray() {
+    const body = {
+      firstName: firstNameInput.value,
+      lastName: lastNameInput.value,
+      partyId: partyInput.value,
+      personalVotes: personalVotesInput.value,
+    };
+
+    // function logArray() {
+    //   console.log(arrValues);
+    // }
+
+    fetch(backendURI + "/candidate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    })
+      .then((response) => response.json())
+      .then((candidateData) => {
+        console.log(candidateData);
+      });
+    location.reload();
+  }
+}
+// function addCandidate() {
+//   let addBtn = document.querySelector(".addBtn");
+// }
 
 initParties();
 getCandidates();
 partyDropdown.addEventListener("change", getCandidates);
-//getCandidates();
+
+// export default () => {
+//   const content = document.querySelector(".content");
+//   fetch("./pages/candidates/candidates.html")
+//     .then((response) => response.text())
+//     .then((html) => {
+//       content.innerHTML = html;
+//
+//     });
+// };
